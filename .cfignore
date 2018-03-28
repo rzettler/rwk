@@ -1,0 +1,5 @@
+.gitignore
+LICENSE
+README.md
+db.sqlite3
+pyvenv.cfg

@@ -1,0 +1,19 @@
+{% extends 'rwkapp/base.html' %}
+
+{% block title %}
+	<title>Liste der Eintraege</title>
+{% endblock %}
+
+{% block eintraege_active %}active{% endblock %}">
+
+{% block content %}
+<div>
+	<h3>Liste der Eintraege</h3>
+</div>
+<a href="{% url 'eintrag_new' %}" class="top-menu"><span class="fas fa-plus-circle fa-3x" style="color:green"></span><span style="color:green">Eintrag hinzufuegen</span></a><br><br>
+{% for eintrag in rwk_eintraege %}
+<div class=eintraege>
+    <a href="{% url 'eintraege_detail' pk=eintrag.pk %}">{{ eintrag }}</a><br>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'rwkapp/base.html' %}
+
+{% block title %}
+	<title>Liste der Einzahlungen</title>
+{% endblock %}
+
+{% block einzahlungen_active %}active{% endblock %}">
+
+{% block content %}
+<div>
+	<h3>Liste der Einzahlungen</h3>
+</div>
+<a href="{% url 'einzahlung_new' %}" class="top-menu"><span class="fas fa-plus-circle fa-3x" style="color:green"></span><span style="color:green">Einzahlung hinzufuegen</span></a><br><br>
+{% for einzahlung in rwk_einzahlungen %}
+<div class=einzahlungen>
+    <a href="{% url 'einzahlung_detail' pk=einzahlung.pk %}">{{ einzahlung }}</a><br>
+</div>
+{% endfor %}
+{% endblock %}

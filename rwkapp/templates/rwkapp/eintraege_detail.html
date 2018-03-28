@@ -1,0 +1,31 @@
+{% extends 'rwkapp/base.html' %}
+
+{% block title %}
+	<title>Details des Eintrags {{ eintrag }}</title>
+{% endblock %}
+
+{% block content %}
+<div>
+	<h3>Details des Eintrags {{ eintrag }}</h3>
+</div>
+<div class=eintraege>
+    Eintrag: {{ eintrag }}<br>
+	pk: {{ eintrag.pk }}<br>
+	Schuetze: {{ eintrag.rwk_schuetze }}<br>
+	Gegner: {{ eintrag.rwk_mannschaft }}<br>
+	Datum des RWK: {{ eintrag.fight_date }}<br>
+	Ringe: {{ eintrag.ringe }}<br>
+	Anzahl 8er: {{ eintrag.anzahl_8er }}<br>
+	Anzahl 7er: {{ eintrag.anzahl_7er }}<br>
+	Anzahl 6er: {{ eintrag.anzahl_6er }}<br>
+	Anzahl 5er: {{ eintrag.anzahl_5er }}<br>
+	Anzahl 4er: {{ eintrag.anzahl_4er }}<br>
+	Anzahl 3er: {{ eintrag.anzahl_3er }}<br>
+	Anzahl 2er: {{ eintrag.anzahl_2er }}<br>
+	Anzahl 1er: {{ eintrag.anzahl_1er }}<br>
+	Anzahl 0er: {{ eintrag.anzahl_0er }}<br>
+	Betrag: {{ eintrag.betrag }}   €<br>
+	created: {{ eintrag.created_date }}<br>
+	created by: {{ eintrag.created_by }}<br>
+</div>
+{% endblock %}

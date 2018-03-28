@@ -1,0 +1,19 @@
+{% extends 'rwkapp/base.html' %}
+
+{% block title %}
+	<title>Liste der Schuetzen</title>
+{% endblock %}
+
+{% block schuetzen_active %}active{% endblock %}">
+
+{% block content %}
+<div>
+	<h3>Liste der Schuetzen</h3>
+</div>
+<a href="{% url 'schuetze_new' %}" class="top-menu"><span class="fas fa-plus-circle fa-3x" style="color:green"></span><span style="color:green">Schuetze hinzufuegen</span></a><br><br>
+{% for schuetze in rwk_schuetzen %}
+<div class=schuetzen>
+    <a href="{% url 'schuetzen_detail' pk=schuetze.pk %}">{{ schuetze }}</a><br>
+</div>
+{% endfor %}
+{% endblock %}

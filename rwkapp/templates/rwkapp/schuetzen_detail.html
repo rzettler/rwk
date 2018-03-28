@@ -1,0 +1,16 @@
+{% extends 'rwkapp/base.html' %}
+
+{% block title %}
+	<title>Details des Schuetzen {{ schuetze }}</title>
+{% endblock %}
+
+{% block content %}
+<div>
+	<h3>Details des Schuetzen {{ schuetze }}</h3>
+</div>
+<div class=schuetzen>
+    Name: {{ schuetze }}<br>
+	pk: {{ schuetze.pk }}<br>
+	created: {{ schuetze.created_date }}<br>
+</div>
+{% endblock %}

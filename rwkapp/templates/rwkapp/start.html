@@ -1,0 +1,20 @@
+{% extends 'rwkapp/base.html' %}
+
+{% block title %}
+	<title>Digitales RWK Sparschwein</title>
+{% endblock %}
+
+{% block uebersicht_active %}active{% endblock %}">
+
+{% block content %}
+<div>
+	<h3>Guthaben-/Schuldenübersicht</h3>
+</div>
+<table>
+{% for schuetze,eintrag in betraege.items %}
+<tr>
+<td>{{ schuetze }}:</td><td>     <span style="color:{% if eintrag <= 0.0 %}red{% else %}lightgreen{% endif %}">{{ eintrag }}   €</span></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
