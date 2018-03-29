@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
+from django.conf import settings as rz_settings
+from django.core.mail import send_mail
 from .models import RWK_Mannschaft
 from .models import RWK_Schuetze
 from .models import RWK_Eintrag
@@ -52,6 +54,31 @@ def eintrag_new(request):
             if eintrag.betrag > 5.0:   #Top-Stopp
                 eintrag.betrag = 5.0		
             eintrag.save()
+            EMAIL_MESSAGE="pk: " + str(eintrag.pk) + "\
+			                                   \n\nSchuetze: " + str(eintrag.rwk_schuetze) + "\
+			                                   \n\nGegner: " + str(eintrag.rwk_mannschaft) + "\
+											   \nDatum des RWK: " + str(eintrag.fight_date)  + "\
+											   \nRinge: " + str(eintrag.ringe) + "\
+											   \nAnzahl 8er: " + str(eintrag.anzahl_8er) + "\
+											   \nAnzahl 7er: " + str(eintrag.anzahl_7er) + "\
+											   \nAnzahl 6er: " + str(eintrag.anzahl_6er) + "\
+											   \nAnzahl 5er: " + str(eintrag.anzahl_5er) + "\
+											   \nAnzahl 4er: " + str(eintrag.anzahl_4er) + "\
+											   \nAnzahl 3er: " + str(eintrag.anzahl_3er) + "\
+											   \nAnzahl 2er: " + str(eintrag.anzahl_2er) + "\
+											   \nAnzahl 1er: " + str(eintrag.anzahl_1er) + "\
+											   \nAnzahl 0er: " + str(eintrag.anzahl_0er) + "\
+											   \nBetrag: " + str(eintrag.betrag) + "   €\
+											   \ncreated: " + str(eintrag.created_date) + "\
+											   \ncreated by: " + str(eintrag.created_by)
+            if rz_settings.SENT_BACKUP_EMAIL == True:
+                send_mail(
+                    'RWK APP - neuer Eintrag',
+                    EMAIL_MESSAGE,
+                    rz_settings.DEFAULT_FROM_EMAIL,
+                    [rz_settings.EMAIL_TO],
+                    fail_silently=False,
+                )
             return redirect('eintraege_detail', pk=eintrag.pk)
     else:
         form = EintragForm()
@@ -116,6 +143,21 @@ def einzahlung_new(request):
             einzahlung.created_date = timezone.now()
             einzahlung.created_by = request.user
             einzahlung.save()
+            #send email as backup
+            EMAIL_MESSAGE="pk: " + str(einzahlung.pk) + "\
+			                                   \n\nSchuetze: " + str(einzahlung.rwk_schuetze) + "\
+											   \nBetrag: " + str(einzahlung.betrag) + "   €\
+											   \nTag der Einzahlung: " + str(einzahlung.tag_der_einzahlung)  + "\
+											   \ncreated: " + str(einzahlung.created_date) + "\
+											   \ncreated by: " + str(einzahlung.created_by)
+            if rz_settings.SENT_BACKUP_EMAIL == True:
+                send_mail(
+                    'RWK APP - neue Einzahlung',
+                    EMAIL_MESSAGE,
+                    rz_settings.DEFAULT_FROM_EMAIL,
+                    [rz_settings.EMAIL_TO],
+                    fail_silently=False,
+                )
             return redirect('einzahlung_detail', pk=einzahlung.pk)
     else:
         form = EinzahlungForm()

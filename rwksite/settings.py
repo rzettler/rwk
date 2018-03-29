@@ -120,3 +120,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+
+#for senden emails
+EMAIL_HOST="smtp.1und1.com"
+EMAIL_HOST_PASSWORD="mkf100bg"
+EMAIL_USE_SSL=True
+EMAIL_PORT=465
+EMAIL_HOST_USER="woelfle@reinhard-zettler.de"
+EMAIL_TO="zettler@de.ibm.com"
+DEFAULT_FROM_EMAIL="woelfle@reinhard-zettler.de"
+SENT_BACKUP_EMAIL=True
