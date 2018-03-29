@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^einzahlung/$', views.einzahlungen_list, name='einzahlungen_list'),
     url(r'^einzahlung/(?P<pk>\d+)/$', views.einzahlung_detail, name='einzahlung_detail'),
     url(r'^einzahlung/new/$', views.einzahlung_new, name='einzahlung_new'),
+    url(r'^email/$', views.email, name='email'),
 ]

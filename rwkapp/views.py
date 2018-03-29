@@ -205,6 +205,14 @@ def login_view(request):
 
 def logout_view(request):
 	logout(request)
-	print(request.GET['next'])
-
 	return redirect(request.GET['next'])
+
+def email(request):
+	send_mail(
+		'RWK APP - Test Mail',
+		'Das ist eine Email von Django zum Test',
+		rz_settings.DEFAULT_FROM_EMAIL,
+		[rz_settings.EMAIL_TO],
+		fail_silently=False,
+	)
+	return redirect('home')
