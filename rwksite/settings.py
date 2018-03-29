@@ -129,4 +129,4 @@ EMAIL_PORT=25
 EMAIL_HOST_USER="woelfle@reinhard-zettler.de"
 EMAIL_TO="zettler@de.ibm.com"
 DEFAULT_FROM_EMAIL="woelfle@reinhard-zettler.de"
-SENT_BACKUP_EMAIL=True
+SENT_BACKUP_EMAIL=False
