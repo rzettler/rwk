@@ -122,14 +122,14 @@ STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 
 #for senden emails
-EMAIL_HOST="smtp.1und1.com"
-EMAIL_HOST_PASSWORD="mkf100bg"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_HOST_PASSWORD="rwk12345"
 EMAIL_USE_SSL=False
 EMAIL_USE_TLS=True
 #EMAIL_PORT=25
 #EMAIL_PORT=465
 EMAIL_PORT=587
-EMAIL_HOST_USER="reinhard.zettler@reinhard-zettler.de"
+EMAIL_HOST_USER="rwkboehen@gmail.com"
 EMAIL_TO="zettler@de.ibm.com"
-DEFAULT_FROM_EMAIL="reinhard.zettler@reinhard-zettler.de"
+DEFAULT_FROM_EMAIL="rwkboehen@gmail.com"
 SENT_BACKUP_EMAIL=True
